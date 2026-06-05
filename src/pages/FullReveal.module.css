@@ -110,7 +110,7 @@
 .elleCard {
   background-color: var(--color-neutral-white);
   border: 1px solid var(--color-border-default);
-  border-radius: 8px;
+  border-radius: 8px 8px 0 0;
   margin: var(--layout-spacing-md);
   margin-bottom: 0;
   display: flex;
@@ -123,7 +123,7 @@
   align-items: center;
   gap: var(--layout-spacing-2xs);
   padding: 10px 16px;
-  border-bottom: 1px solid rgba(105, 43, 238, 0.15);
+  border-bottom: 1px solid var(--color-border-default);
   flex-shrink: 0;
   background-color: var(--color-neutral-white);
 }
