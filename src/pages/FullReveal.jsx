@@ -270,12 +270,7 @@ export default function FullReveal() {
                 <div className={mkt.planPrice}>$53.95<span className={mkt.planPer}>+/mo</span></div>
                 <button className={mkt.planCta}>Shop Plans</button>
               </div>
-              <div className={`${mkt.pricingCard} ${mkt.pricingCardEnterprise}`}>
-                <span className={mkt.planName}>Enterprise</span>
-                <p className={mkt.planDesc}>Legal and identity theft protection benefits designed to give your employees and their families a sense of security.</p>
-                <div className={mkt.planPriceContact}>Contact for pricing</div>
-                <button className={mkt.planCtaSecondary}>Learn more</button>
-              </div>
+
             </div>
           </div>
         </section>

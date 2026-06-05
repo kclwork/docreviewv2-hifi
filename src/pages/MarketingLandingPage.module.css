@@ -290,9 +290,10 @@
 
 .pricingGrid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, minmax(0, 480px));
   gap: var(--layout-spacing-md);
   align-items: stretch;
+  justify-content: center;
 }
 
 .pricingCard {

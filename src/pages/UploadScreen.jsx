@@ -178,12 +178,7 @@ export default function UploadScreen() {
                 <div className={styles.planPrice}>$53.95<span className={styles.planPer}>+/mo</span></div>
                 <button className={styles.planCta}>Shop Plans</button>
               </div>
-              <div className={`${styles.pricingCard} ${styles.pricingCardEnterprise}`}>
-                <span className={styles.planName}>Enterprise</span>
-                <p className={styles.planDesc}>Legal and identity theft protection benefits designed to give your employees and their families a sense of security.</p>
-                <div className={styles.planPriceContact}>Contact for pricing</div>
-                <button className={styles.planCtaSecondary}>Learn more</button>
-              </div>
+
             </div>
           </div>
         </section>
