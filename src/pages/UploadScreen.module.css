@@ -1,0 +1,78 @@
+/* Uploaded file confirmed state — stacked, centered */
+.confirmedStack {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--layout-spacing-xs);
+  padding: 32px 24px;
+}
+
+.checkCircle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background-color: var(--color-neutral-black);
+  border-radius: 50%;
+  margin-bottom: 4px;
+  flex-shrink: 0;
+}
+
+.fileName {
+  font-family: var(--font-secondary);
+  font-size: var(--type-paragraph-sm-size);
+  line-height: var(--type-paragraph-sm-line-height);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+  text-align: center;
+}
+
+.fileSize {
+  font-family: var(--font-secondary);
+  font-size: var(--type-paragraph-xs-size);
+  line-height: var(--type-paragraph-xs-line-height);
+  color: var(--color-text-muted);
+  text-align: center;
+}
+
+.changeFile {
+  font-family: var(--font-secondary);
+  font-size: var(--type-paragraph-sm-size);
+  line-height: var(--type-paragraph-sm-line-height);
+  font-weight: var(--font-weight-regular);
+  color: var(--color-text-primary);
+  background: none;
+  text-decoration: underline;
+  cursor: pointer;
+  transition: color 0.15s;
+  margin-top: 4px;
+}
+
+.changeFile:hover {
+  color: var(--color-text-muted);
+}
+
+/* Review CTA — centered, auto width */
+.reviewWrap {
+  display: flex;
+  justify-content: center;
+  padding: 8px 0 4px;
+}
+
+.reviewBtn {
+  font-family: var(--font-secondary);
+  font-size: var(--button-large-font-size);
+  line-height: var(--button-large-line-height);
+  font-weight: var(--button-large-font-weight);
+  color: var(--color-text-inverse);
+  background-color: var(--color-neutral-black);
+  border-radius: var(--layout-border-radius-full);
+  padding: var(--button-large-padding-v) var(--button-large-padding-h);
+  cursor: pointer;
+  transition: background-color 0.15s;
+}
+
+.reviewBtn:hover {
+  background-color: var(--color-neutral-gray-900);
+}

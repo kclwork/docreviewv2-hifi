@@ -1,0 +1,389 @@
+.page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.inner {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding-left: 66px;
+  padding-right: 66px;
+}
+
+/* ── HERO ── */
+.hero {
+  background-color: #F5F4EE;
+  padding: 80px 0 72px;
+  text-align: center;
+}
+
+.heroSubtext {
+  font-family: var(--font-secondary);
+  font-size: var(--type-paragraph-size);
+  line-height: var(--type-paragraph-line-height);
+  color: var(--color-text-muted);
+  margin-top: var(--layout-spacing-lg);
+}
+
+.heroHeadline {
+  font-family: var(--font-primary);
+  font-size: var(--type-h2-size);
+  line-height: var(--type-h2-line-height);
+  letter-spacing: var(--type-h2-letter-spacing);
+  font-weight: var(--font-weight-light);
+  color: var(--color-neutral-black);
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+/* ── ELLE WIDGET ── */
+.widget {
+  background-color: var(--color-neutral-white);
+  padding: 64px 0 96px;
+  border-bottom: 1px solid var(--color-border-default);
+}
+
+.widget .inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
+}
+
+/* Left column */
+.widgetLeft {
+  display: flex;
+  flex-direction: column;
+  gap: var(--layout-spacing-md);
+}
+
+.widgetEyebrow {
+  font-family: var(--font-secondary);
+  font-size: var(--type-eyebrow-size);
+  line-height: var(--type-eyebrow-line-height);
+  font-weight: var(--type-eyebrow-weight);
+  text-transform: uppercase;
+  color: var(--color-primary-purple);
+  letter-spacing: 0.5px;
+}
+
+.widgetHeading {
+  font-family: var(--font-primary);
+  font-size: var(--type-h3-size);
+  line-height: var(--type-h3-line-height);
+  letter-spacing: var(--type-h3-letter-spacing);
+  font-weight: var(--font-weight-light);
+  color: var(--color-neutral-black);
+}
+
+.widgetBody {
+  font-family: var(--font-secondary);
+  font-size: var(--type-paragraph-size);
+  line-height: var(--type-paragraph-line-height);
+  color: var(--color-text-muted);
+}
+
+.trustList {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--layout-spacing-xs);
+  margin: 0;
+  padding: 0;
+}
+
+.trustItem {
+  display: flex;
+  align-items: center;
+  gap: var(--layout-spacing-xs);
+  font-family: var(--font-secondary);
+  font-size: var(--type-paragraph-sm-size);
+  line-height: var(--type-paragraph-sm-line-height);
+  color: var(--color-text-primary);
+}
+
+.trustCheck {
+  color: var(--color-primary-purple);
+  font-weight: var(--font-weight-semibold);
+  flex-shrink: 0;
+}
+
+/* Right column — upload card */
+.widgetRight {
+  display: flex;
+  flex-direction: column;
+}
+
+.uploadCard {
+  background-color: #F4F4F5;
+  border-radius: 16px;
+  overflow: hidden;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--layout-spacing-sm);
+}
+
+.uploadZone {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--layout-spacing-sm);
+  padding: 48px 40px 40px;
+  border: 2px dashed var(--color-border-default);
+  border-radius: 12px;
+  background-color: var(--color-neutral-white);
+  cursor: pointer;
+  transition: border-color 0.15s;
+}
+
+.uploadZone:hover {
+  border-color: var(--color-primary-purple);
+}
+
+.uploadIconWrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  background-color: var(--color-primary-light-purple);
+  border-radius: 50%;
+}
+
+.uploadBtn {
+  font-family: var(--font-secondary);
+  font-size: var(--button-large-font-size);
+  line-height: var(--button-large-line-height);
+  font-weight: var(--button-large-font-weight);
+  color: var(--color-text-inverse);
+  background-color: var(--color-action-primary-default);
+  border-radius: var(--layout-border-radius-full);
+  padding: var(--button-large-padding-v) var(--button-large-padding-h);
+  transition: background-color 0.15s;
+  pointer-events: none;
+}
+
+.uploadDrag {
+  font-family: var(--font-secondary);
+  font-size: var(--type-paragraph-sm-size);
+  line-height: var(--type-paragraph-sm-line-height);
+  color: var(--color-text-muted);
+}
+
+.fileInput {
+  display: none;
+}
+
+.uploadFormats {
+  font-family: var(--font-secondary);
+  font-size: var(--type-paragraph-xs-size);
+  line-height: var(--type-paragraph-xs-line-height);
+  color: var(--color-neutral-gray-600);
+  text-align: center;
+}
+
+.uploadDisclaimer {
+  font-family: var(--font-secondary);
+  font-size: var(--type-paragraph-xs-size);
+  line-height: var(--type-paragraph-xs-line-height);
+  color: var(--color-neutral-gray-600);
+  text-align: center;
+}
+
+/* ── FAQ ── */
+.faqSection {
+  padding: 96px 0;
+  background-color: var(--color-neutral-gray-200);
+}
+
+.faqHeader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--layout-spacing-md);
+  margin-bottom: var(--layout-spacing-lg);
+  text-align: center;
+}
+
+.faqHeading {
+  font-family: var(--font-primary);
+  font-size: var(--type-h3-size);
+  line-height: var(--type-h3-line-height);
+  letter-spacing: var(--type-h3-letter-spacing);
+  font-weight: var(--font-weight-light);
+  color: var(--color-neutral-black);
+}
+
+.helpCenterBtn {
+  font-family: var(--font-secondary);
+  font-size: var(--button-medium-font-size);
+  line-height: var(--button-medium-line-height);
+  font-weight: var(--button-medium-font-weight);
+  color: var(--color-neutral-gray-900);
+  background: transparent;
+  border: 1px solid var(--color-neutral-gray-900);
+  border-radius: var(--layout-border-radius-full);
+  padding: var(--button-medium-padding-v) var(--button-medium-padding-h);
+  transition: background-color 0.15s, color 0.15s;
+  cursor: pointer;
+}
+
+.helpCenterBtn:hover {
+  background-color: var(--color-action-secondary-hover);
+  color: var(--color-text-inverse);
+}
+
+/* ── BENEFITS ── */
+.benefits {
+  padding: 96px 0;
+}
+
+.benefits .inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
+}
+
+.benefitsImg {
+  width: 100%;
+  border-radius: 16px;
+  object-fit: cover;
+}
+
+.benefitsRight {
+  display: flex;
+  flex-direction: column;
+  gap: var(--layout-spacing-lg);
+}
+
+.benefitsHeading {
+  font-family: var(--font-primary);
+  font-size: var(--type-h3-size);
+  line-height: var(--type-h3-line-height);
+  letter-spacing: var(--type-h3-letter-spacing);
+  font-weight: var(--font-weight-light);
+  color: var(--color-neutral-black);
+}
+
+/* ── PRICING ── */
+.pricing {
+  padding: 96px 0;
+  background-color: var(--color-neutral-gray-300);
+}
+
+.pricingHeading {
+  font-family: var(--font-primary);
+  font-size: var(--type-h3-size);
+  line-height: var(--type-h3-line-height);
+  letter-spacing: var(--type-h3-letter-spacing);
+  font-weight: var(--font-weight-light);
+  color: var(--color-neutral-black);
+  margin-bottom: 48px;
+}
+
+.pricingHeading em {
+  font-style: italic;
+}
+
+.pricingGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--layout-spacing-md);
+  align-items: stretch;
+}
+
+.pricingCard {
+  display: flex;
+  flex-direction: column;
+  gap: var(--layout-spacing-sm);
+  border: 1px solid var(--color-border-default);
+  border-radius: 16px;
+  padding: var(--layout-spacing-lg);
+  background-color: var(--color-neutral-white);
+}
+
+.pricingCardEnterprise {
+  background-color: var(--color-neutral-gray-400);
+  border-color: transparent;
+}
+
+.planName {
+  font-family: var(--font-secondary);
+  font-size: var(--type-paragraph-lg-size);
+  line-height: var(--type-paragraph-lg-line-height);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+}
+
+.planDesc {
+  font-family: var(--font-secondary);
+  font-size: var(--type-paragraph-sm-size);
+  line-height: var(--type-paragraph-sm-line-height);
+  color: var(--color-text-muted);
+  flex: 1;
+}
+
+.planPrice {
+  font-family: var(--font-secondary);
+  font-size: var(--type-h3-size);
+  line-height: var(--type-h3-line-height);
+  letter-spacing: -0.5px;
+  font-weight: var(--font-weight-light);
+  color: var(--color-neutral-black);
+}
+
+.planPer {
+  font-size: var(--type-paragraph-lg-size);
+  letter-spacing: 0;
+}
+
+.planPriceContact {
+  font-family: var(--font-secondary);
+  font-size: var(--type-paragraph-size);
+  color: var(--color-text-muted);
+  padding: 12px 0;
+  flex: 1;
+}
+
+.planCta {
+  font-family: var(--font-secondary);
+  font-size: var(--button-large-font-size);
+  line-height: var(--button-large-line-height);
+  font-weight: var(--button-large-font-weight);
+  color: var(--color-text-inverse);
+  background-color: var(--color-action-primary-default);
+  border-radius: var(--layout-border-radius-full);
+  padding: var(--button-large-padding-v) var(--button-large-padding-h);
+  width: 100%;
+  margin-top: auto;
+  cursor: pointer;
+  transition: background-color 0.15s;
+}
+
+.planCta:hover {
+  background-color: var(--color-action-primary-hover);
+}
+
+.planCtaSecondary {
+  font-family: var(--font-secondary);
+  font-size: var(--button-large-font-size);
+  line-height: var(--button-large-line-height);
+  font-weight: var(--button-large-font-weight);
+  color: var(--color-neutral-gray-900);
+  background-color: transparent;
+  border: 1px solid var(--color-neutral-gray-900);
+  border-radius: var(--layout-border-radius-full);
+  padding: var(--button-large-padding-v) var(--button-large-padding-h);
+  width: 100%;
+  margin-top: auto;
+  cursor: pointer;
+  transition: background-color 0.15s, color 0.15s;
+}
+
+.planCtaSecondary:hover {
+  background-color: var(--color-action-secondary-hover);
+  color: var(--color-text-inverse);
+}
