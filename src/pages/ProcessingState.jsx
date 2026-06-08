@@ -65,7 +65,7 @@ export default function ProcessingState() {
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      navigate('/partial-results')
+      navigate('/full-review')
     }, 6000)
     return () => clearTimeout(timer)
   }, [navigate])

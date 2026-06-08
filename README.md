@@ -1,6 +1,8 @@
-# Elle Summary — Hi-Fi Prototype (Variant 1: Partial Reveal)
+# Elle Summary — Hi-Fi Prototype (Variant 2: Full Review / Query-Based Action Gate)
 
 LegalShield's AI-powered document review experience. Desktop prototype built to match Figma designs pixel-accurately.
+
+In Variant 2, the user gets the full Elle review for free with no gate. All issues are visible immediately. The email gate is triggered only when the user submits a question in the Elle chatbox — they must provide their email to receive Elle's answer. The user has 1 free query. After the answer is revealed, they are prompted to subscribe for more.
 
 ## Running Locally
 
@@ -11,12 +13,22 @@ npm run dev
 
 Then open [http://localhost:5173](http://localhost:5173).
 
-> Deployment instructions will be added in Phase 8.
+> Repo: https://github.com/kclwork/docreviewv2-hifi
+
+## Routes
+
+| Route | Page |
+|-------|------|
+| `/` | Homepage |
+| `/get-a-free-document-review` | Marketing landing page |
+| `/upload` | Upload screen |
+| `/processing` | Processing state (auto-advances to `/full-review` after 6s) |
+| `/full-review` | Full Review + Chatbox (default → query submitted → email gate → Elle response → minimized) |
 
 ## File Structure
 
 ```
-freemium-doc-review-v1-hifi/
+freemium-doc-review-v2-hifi/
 ├── design-tokens.css          # Stratos DS tokens (colors, type, spacing) — do not recreate
 ├── stratos-components.md      # Component specs — read before building any UI
 ├── brief.md                   # Project brief — update between sessions
@@ -27,10 +39,12 @@ freemium-doc-review-v1-hifi/
 ├── public/
 │   ├── fonts/                 # ABC Otto + Instrument Rounded variable fonts
 │   └── images/
-│       ├── homepage/          # hero/, awards/, aol/, logo-cloud/, how-it-works/, info/
+│       ├── homepage/
 │       ├── marketing-landing-page/
-│       └── logo.svg           # LegalShield wordmark + shield mark
-├── references/                # Figma reference images (hi-fi + annotations per screen)
+│       └── logo.svg
+├── references/
+│   ├── variant-1/             # V1 references (for context only)
+│   └── variant-2/             # V2 flow chart + screen annotations
 └── src/
     ├── main.jsx
     ├── index.css              # Imports design-tokens.css + global resets
@@ -42,14 +56,22 @@ freemium-doc-review-v1-hifi/
     │   ├── HeroMarquee.jsx / HeroMarquee.module.css
     │   └── HowWeHelpCarousel.jsx / HowWeHelpCarousel.module.css
     └── pages/
-        ├── Homepage.jsx / Homepage.module.css         ✅ Phase 2 complete
-        ├── MarketingLandingPage.jsx/module.css        ✅ Phase 3 complete
-        ├── UploadScreen.jsx / UploadScreen.module.css ✅ Phase 4 complete
-        ├── ProcessingState.jsx/module.css             ✅ Phase 5 complete
-        ├── PartialResults.jsx / PartialResults.module.css ✅ Phase 6 complete
-        ├── FullReveal.jsx / FullReveal.module.css     ✅ Phase 7 complete
-        └── PlaceholderPage.module.css
+        ├── Homepage.jsx / Homepage.module.css         ✅ Phase 2 (copied from V1)
+        ├── MarketingLandingPage.jsx / .module.css     ✅ Phase 3 (copied from V1)
+        ├── UploadScreen.jsx / UploadScreen.module.css ✅ Phase 4 (copied from V1)
+        ├── ProcessingState.jsx / .module.css          ✅ Phase 5 (copied from V1; auto-advances to /full-review)
+        └── FullReview.jsx / FullReview.module.css     ✅ Phases 6–8 (NEW in V2)
 ```
+
+## Chatbox State Machine (on `/full-review`)
+
+```
+default ──▶ query submitted ──▶ email gate ──▶ (invalid: stay) ──▶ Elle response
+                                                                       │
+                                                                       └─ "Subscribe to a plan" → scroll to pricing
+```
+
+Minimize/expand chevron in the chatbox header is independent of the state above — clicking it collapses or restores the chatbox to its current state. Widget height is locked at 844px across both expanded and minimized chatbox states.
 
 ## Updating brief.md
 
