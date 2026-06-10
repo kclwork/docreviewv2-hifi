@@ -1,7 +1,7 @@
 # Project Brief — Elle Summary (freemium-doc-review-v2-hifi)
 
 ## Project Description
-A hi-fi desktop prototype of Elle Summary — an AI-powered document review experience using LegalShield's AI assistant, Elle. Built to match Figma designs as closely as possible in colors, typography, spacing, and interactions.
+A hi-fi prototype of Elle Summary — an AI-powered document review experience using LegalShield's AI assistant, Elle. Built to match Figma designs as closely as possible in colors, typography, spacing, and interactions. This repo contains both the **desktop** prototype and a **mobile** prototype for Variant 2.
 
 ## Concept
 **Elle Summary — Variant 2: Full Review / Query-Based Action Gate**
@@ -9,19 +9,25 @@ Users get the full Elle document review for free with no gate. All issues are vi
 
 ## Screens & Routes
 
-| Screen | Route | Phase | Status |
-|--------|-------|-------|--------|
-| Homepage | `/` | Phase 2 | ✅ Complete — copied from V1, do not touch |
-| Marketing Landing Page | `/get-a-free-document-review` | Phase 3 | ✅ Complete — copied from V1, do not touch |
-| Upload Screen | `/upload` | Phase 4 | ✅ Complete — copied from V1, do not touch |
-| Processing State | `/processing` | Phase 5 | ✅ Complete — copied from V1, do not touch |
-| Full Review + Chatbox | `/full-review` | Phase 6 | ✅ Complete |
-| Query Submitted | `/full-review` (state) | Phase 6 | ✅ Complete |
-| Email Gate | `/full-review` (state) | Phase 7 | ✅ Complete |
-| Elle Response | `/full-review` (state) | Phase 7 | ✅ Complete |
-| Minimized Chatbox | `/full-review` (state) | Phase 8 | ✅ Complete |
+### Desktop
+| Screen | Route | Status |
+|--------|-------|--------|
+| Homepage | `/` | ✅ Complete (copied from V1) |
+| Marketing Landing Page | `/get-a-free-document-review` | ✅ Complete (copied from V1) |
+| Upload Screen | `/upload` | ✅ Complete (copied from V1) |
+| Processing State | `/processing` | ✅ Complete (copied from V1; auto-advances to `/full-review` after 6s) |
+| Full Review + Chatbox (all states) | `/full-review` | ✅ Complete |
 
-Note: Screens 6–9 are all states within the same `/full-review` route, not separate pages. State is managed in React.
+### Mobile V2
+| Screen | Route | Status |
+|--------|-------|--------|
+| Mobile Homepage | `/mobile-v2` | ✅ Reused from V1 mobile |
+| Mobile Marketing Landing | `/mobile-v2/get-a-free-document-review` | ✅ Reused from V1 mobile |
+| Mobile Upload | `/mobile-v2/upload` | ✅ Reused from V1 mobile |
+| Mobile Processing | `/mobile-v2/processing` | ✅ Route-aware — advances to `/mobile-v2/full-review` |
+| Mobile Full Review + Chatbox Drawer + FAB | `/mobile-v2/full-review` | ✅ Complete |
+
+Note: Desktop chatbox states (default / email gate / Elle response / minimized) all live within `/full-review`. Mobile chatbox states all live within `/mobile-v2/full-review`. State is managed in React.
 
 ## Tech Stack
 - React 18 + Vite 5
@@ -38,153 +44,94 @@ Note: Screens 6–9 are all states within the same `/full-review` route, not sep
 - Instrument Rounded: buttons, labels, UI elements, stats figures, pricing figures
 - Never hardcode colors, spacing, or typography — always use CSS variables
 
-## Phase Plan
+## Phase Plan — Desktop
 - **Phase 1** ✅ — Project setup, shared Nav + Footer, routing scaffold — copied from V1
-- **Phase 2** ✅ — Homepage — complete and approved, copied from V1, do not modify
-- **Phase 3** ✅ — Marketing Landing Page — complete and approved, copied from V1, do not modify
-- **Phase 4** ✅ — Upload Screen — complete and approved, copied from V1, do not modify
-- **Phase 5** ✅ — Processing State — complete and approved, copied from V1, do not modify
+- **Phase 2** ✅ — Homepage — copied from V1
+- **Phase 3** ✅ — Marketing Landing Page — copied from V1
+- **Phase 4** ✅ — Upload Screen — copied from V1
+- **Phase 5** ✅ — Processing State — copied from V1
 - **Phase 6** ✅ — Full Review + Chatbox (default + query submitted states)
 - **Phase 7** ✅ — Email Gate + Elle Response states (centered overlay on blurred chatbox background)
-- **Phase 8** ✅ — Minimized Chatbox state + end-to-end flow QA (widget height locked across expand/collapse)
-- **Phase 9** 🚀 — GitHub push complete; Vercel deployment handled manually
+- **Phase 8** ✅ — Minimized Chatbox state + end-to-end flow QA
+- **Phase 9** ✅ — GitHub push complete; Vercel handles deployment via Git integration
 
-## Key Constraint — Reuse the V1 Widget Shell
-The Elle widget (two-column layout) was already built in Variant 1. For all new screens in this variant, reuse that widget shell as the base. Do not rebuild the two-column layout from scratch. The existing structure includes:
-- Outer wrapper: two columns, 0px gap, flush edges
-- Left column: `--color-surface-warm-default` background, inner white contract card (`flex: 1`), "Preview · page 1 of 12" label 24px below card, encryption note below that
-- Right column: `--color-accent-subtle-bg` (light purple) background, inner white Elle content card
-- Widget section: eyebrow "MEET ELLE — YOUR AI ASSISTANT" + H3 "Get your document reviewed" above columns
+## Phase Plan — Mobile V2
+- **Phases 1–4** ✅ — Mobile homepage, marketing landing, upload, processing reused from V1 mobile; parallel `/mobile-v2/*` routes added pointing to the same page components
+- **Phase 5** ✅ — `/mobile-v2/full-review` built by copying `MobileFullReveal` and stripping Elle's bottom line, success banner, and warm-cream section. New `ChatboxDrawer` component built (default state): bottom drawer, slides up via `transform`, rounded top corners, upward shadow, no scrim, page content scrollable behind. Drawer open by default on arrival.
+- **Phase 6** ✅ — Chatbox state machine wired (`'default' | 'email-gate' | 'elle-response'`). On query submit, user bubble renders and email gate appears immediately, blurring the conversation behind a centered white card. Invalid email shows inline red border + `ⓘ` error; valid email dismisses the gate and reveals Elle's response. "Subscribe to a plan" link scrolls to pricing via `useRef + scrollIntoView`.
+- **Phase 7** ✅ — Minimized state via X button. New `ChatboxFAB` component: dark pill at viewport bottom, purple chat-icon circle, "Chat with Elle" label. Hidden when drawer is open. Tapping reopens drawer with conversation state intact (state lifted to the page so it survives close/reopen).
+- **Phase 8** ✅ — End-to-end QA pass: processing → full-review handoff, modal open/close, accordion toggle, issue card expand/collapse, state machine, email validation, FAB visibility + reopen, subscribe scroll, ≥44×44 tap targets, no `:hover` states in mobile CSS, no desktop regressions.
+- **Phase 9** ✅ — Pushed to GitHub; `vercel.json` added so SPA subroutes resolve on direct visit; shared mobile screens (`MobileNav`, `MobileMenuOverlay`, `MobileMktLandingPage`, `MobileUpload`) made route-aware so the V2 funnel doesn't leak into V1 paths.
 
-Changes for V2:
-- Left column: document is NOT blurred — fully readable, scrollable if content exceeds column height
-- Right column: ALL issues are visible, nothing blurred — user can scroll through all issues
-- Right column: chatbox is overlaid and pinned to the bottom of the right column content area (not the viewport)
-- Email gate does NOT appear on page load — it only appears after the user submits a question in the chatbox
-
-## Phase 6 — What to Build
-
-### Screen: Full Review + Chatbox (default state)
-This is the first screen the user sees after processing. Reuse the V1 widget shell with these changes:
-
-**Left column:**
-- Same warm surface background, white inner contract card
-- Contract text is fully readable (not blurred)
-- Scrollbar appears if contract text exceeds column height
-- "Preview · page 1 of 12" label 24px below card, encryption note below that
-
-**Right column:**
-- Same light purple background, white inner Elle content card
-- Structure from top to bottom: POWERED BY ELLE header → Document Summary → Issues Found label + count badge (8) → all 8 issue cards fully visible and scrollable
-- No blurred cards, no email gate on this state
-- Chatbox overlaid and pinned to the bottom of the right column content area:
-  - Chatbox header: "Chat with Elle" label + up chevron icon (clicking chevron minimizes the chatbox)
-  - Default message from Elle: "Hi! I can help you review and understand your document. Ask me about specific clauses, rights, or anything you're unsure about!"
-  - Text input: placeholder "Ask a question about your contract" + arrow submit button
-  - Below input: "Free Access: You have **1 query** available." in small text
-  - Below that: "Your documents are securely encrypted. This answer was generated by AI and is for informational purposes only. It does not constitute legal advice."
-  - Chatbox has white background, top border, upward box shadow
-  - User can still scroll through the issues section above when the chatbox is active
-
-### Screen: Query Submitted (state change, same route)
-Triggered when user types a question and hits submit:
-- User's question appears in the chatbox as a sent message (right-aligned bubble)
-- Input becomes disabled
-- Free query count updates to: "Free Access: You have **0 queries** available."
-- No Elle response yet — that comes after email is submitted (Phase 7)
-
-## Phase 7 — What to Build
-
-### Screen: Email Gate (state change, same route)
-Triggered immediately after user submits a query:
-- Email gate overlay appears inside the chatbox content area (overlays the chatbox, not the full page)
-- Headline: "Elle's got your answer."
-- Subtext: "Enter your email and Elle will walk you through what this means for you."
-- Email input with inline arrow submit button
-- Fine print: "By signing up, you agree to receive emails from LegalShield. View our Privacy Policy"
-- Accept only valid emails — show inline error for invalid input
-- Chatbox header ("Chat with Elle" + chevron) still visible above the overlay
-
-### Screen: Elle Response (state change, same route)
-Triggered after valid email is submitted:
-- Email gate disappears
-- Elle's answer appears in the chatbox as a response message
-- Dummy response copy: "I've reviewed your wedding contract and found..." followed by a short plain-language explanation
-- Below Elle's response: "Free Access: You have **0 queries** available. Subscribe to a plan to get unlimited queries."
-- "Subscribe to a plan" is a text link that scrolls the user to the pricing section on the page
-- Input remains disabled — user cannot submit another question
-
-## Phase 8 — What to Build
-
-### Screen: Minimized Chatbox (state change, same route)
-Triggered when user clicks the up chevron in the chatbox header:
-- Chatbox collapses to just the header bar ("Chat with Elle" label + down chevron)
-- Issues section in the right column is fully visible and scrollable
-- Clicking the down chevron re-expands the chatbox to its previous state
+## Deviations from the original plan
+1. **No visible "query sent" state.** The original mobile spec listed `default → query sent → email gate → Elle answers → minimized` as five distinct states. The implementation matches desktop V2: query submit transitions directly into `email-gate`, with the user's question bubble rendering beneath the (blurred) gate overlay. Reference screen 06 is documentation of the moment rather than a held state.
+2. **Email submit button restyled.** Per a design review against reference 07, the email submit was changed from a filled purple button to a plain dark arrow inline with the input. Drawer also shrinks to 380px in `email-gate` state and the footer (chat input / free-access counter / fine print) is hidden so the gate card sits comfortably.
+3. **FAB subtext removed.** Original spec called for a subtext that switched between "Ask a question about your contract" and "View Elle's response". After review the subtext was removed entirely — the FAB shows only "Chat with Elle".
+4. **Shared mobile screens are route-aware.** The original brief said "do not modify screens 1–4 or any shared mobile components" but also required the `/mobile-v2/*` funnel to flow end-to-end. The narrowest fix was the same pattern already authorized for `MobileProcessing`: derive the path prefix from `location.pathname` so each screen navigates to the matching V1 or V2 route. No styling or behavior changes — only navigation targets.
+5. **`/mobile-v1/*` routes not registered.** This repo's `App.jsx` only registers `/mobile-v2/*` routes. The V1 mobile flow lives in a separate repo. The route-aware fallback to `/mobile-v1` in the shared screens still works correctly when V1 routes are registered elsewhere.
+6. **`vercel.json` added.** Without an SPA rewrite, Vercel returned 404 on direct visits to subroutes. The rewrite sends every path to `/index.html` so React Router can resolve.
 
 ## Key Constraints
-- Target viewport: 1440px desktop, fixed width, centered — content does not stretch
-- Layout margins: 66px left and right on all screens
-- All copy pulled directly from hi-fi mockup reference images in `references/variant-2/`
-- All images pre-supplied in `public/images/` — no placeholder images where real assets exist
-- Nav: only "Get a free document review [AI]" is clickable (routes to marketing landing page)
-- Footer: links do not need to work
-- Processing auto-advances to `/full-review` after 6 seconds (update from V1's `/partial-results`)
-- Chatbox is pinned to the bottom of the right column content area — NOT the viewport
-- Email gate appears inside the chatbox only — NOT a full-page modal
-- Do not rebuild the two-column widget from scratch — reuse and extend the existing V1 shell
-- No GitHub/Vercel until Phase 9
-- Do not guess on design decisions — ask first
-- Do not proceed past a phase without approval
+- Desktop target: 1440px, fixed width, centered, 66px L/R margins
+- Mobile target: 375px design width, fluid above, 28px L/R margins always
+- Mobile minimum tap target: 44×44px on all interactive elements
+- No CSS hover states in any mobile CSS — touch interface only
+- All copy pulled from the reference images in `references/`
+- All images pre-supplied in `public/images/`
+- Mobile drawer is fixed bottom, overlays the page (no scrim), upward box-shadow `0 -4px 12px rgba(0,0,0,0.08)`
+- Chatbox conversation state is preserved across drawer close/reopen
+- Mobile FAB is hidden when drawer is open
 
-## References
-All V2 reference files are in `references/variant-2/`:
-- `Variant-2-Flow-Chart.png` — read this first to understand the full flow
-- `05-full-reveal-chatbox.png` + `05-full-reveal-chatbox-annotation.png` — Full Review + Chatbox default state
-- `06-query-submitted.png` + `06-query-submitted-annotation.png` — Query Submitted state
-- `07-email-gate.png` + `07-email-gate-annotation.png` — Email Gate state
-- `08-elle-response.png` + `08-elle-response-annotation.png` — Elle Response state
-- `09-minimized-chatbox.png` — Minimized Chatbox state
-
-V1 reference files are in `references/variant-1/` — for reference only, do not use as build targets.
-
-## Current Status
-**All build phases complete (1–8). Phase 9: pushed to GitHub at https://github.com/kclwork/docreviewv2-hifi; Vercel deployment is handled manually.**
-
-## Implementation notes (V2 specifics)
-
-### Chatbox
-- Fixed `height: 335px` when expanded; auto when minimized — keeps a constant footprint across default / query submitted / email gate / Elle response.
-- States managed in React local state (`step`, `submittedQuery`, `minimized`, `email`, `emailError`).
-- Auto-scroll-to-bottom on new bubbles via `useRef` on messages container + `useEffect`.
-
-### Email gate overlay
-- Rendered as an absolute-positioned overlay inside the chatbox content area (below the header).
-- Underlying chatbox content gets `filter: blur(4px)` + `pointer-events: none`; overlay container uses flex centering for true horizontal + vertical alignment.
-- Inline email validation against `^[^\s@]+@[^\s@]+\.[^\s@]+$` — invalid input gets red border + ⓘ error message that clears on edit.
-
-### Right column height stabilization
-- Minimized `.elleBody` `max-height` is 705px (vs. 420px default) — chatbox shrinks by 285px, issues area grows by 285px, so the widget's total height stays at 844px across both states.
-
-### Routing
-- V1 routes (`/partial-results`, `/full-reveal`) and pages removed.
-- `/processing` auto-advances to `/full-review` after 6s.
-- "Subscribe to a plan" link in Elle response state scrolls to pricing section via `useRef` + `scrollIntoView({ behavior: 'smooth' })`.
-
-## File structure
+## Current File Structure
 ```
 src/
-├── App.jsx                       # Routes (Phase 6 cleanup applied)
+├── App.jsx                       # Routes: desktop + /mobile-v2/*
+├── index.css
+├── main.jsx
 ├── components/
-│   ├── Nav.jsx / Nav.module.css
-│   ├── Footer.jsx / Footer.module.css
-│   ├── Accordion.jsx / Accordion.module.css
-│   ├── HeroMarquee.jsx / .module.css
-│   └── HowWeHelpCarousel.jsx / .module.css
+│   ├── Nav.jsx / Nav.module.css                      # Desktop
+│   ├── Footer.jsx / Footer.module.css                # Desktop
+│   ├── Accordion.jsx / Accordion.module.css          # Desktop
+│   ├── HeroMarquee.jsx / .module.css                 # Desktop
+│   ├── HowWeHelpCarousel.jsx / .module.css           # Desktop
+│   └── mobile/
+│       ├── MobileNav.jsx / .module.css               # Route-aware logo
+│       ├── MobileMenuOverlay.jsx / .module.css       # Route-aware CTA
+│       ├── MobileFooter.jsx / .module.css
+│       ├── MobileContractModal.jsx / .module.css
+│       ├── MobileFunnelSections.jsx / .module.css    # Hero, FAQ, Benefits, Pricing
+│       ├── ChatboxDrawer.jsx / .module.css           # NEW — bottom drawer + state machine
+│       └── ChatboxFAB.jsx / .module.css              # NEW — minimized pill
 └── pages/
-    ├── Homepage.jsx / .module.css
-    ├── MarketingLandingPage.jsx / .module.css
-    ├── UploadScreen.jsx / .module.css
-    ├── ProcessingState.jsx / .module.css
-    └── FullReview.jsx / .module.css    # NEW in V2 (Phases 6–8)
+    ├── Homepage.jsx / .module.css                    # Desktop
+    ├── MarketingLandingPage.jsx / .module.css        # Desktop
+    ├── UploadScreen.jsx / .module.css                # Desktop
+    ├── ProcessingState.jsx / .module.css             # Desktop
+    ├── FullReview.jsx / .module.css                  # Desktop V2 page (Phases 6–8)
+    └── mobile/
+        ├── MobileHomepage.jsx / .module.css
+        ├── MobileMktLandingPage.jsx / .module.css    # Route-aware navigate
+        ├── MobileUpload.jsx / .module.css            # Route-aware navigate
+        ├── MobileProcessing.jsx / .module.css        # Route-aware destination
+        ├── MobilePartialResults.module.css           # Shared widget shell styles
+        ├── MobileFullReveal.jsx / .module.css        # V1 mobile page (used as the basis for V2)
+        └── MobileV2FullReview.jsx / .module.css      # NEW — V2 mobile full-review page
 ```
+
+## What's Left to Do
+Both desktop and mobile V2 builds are complete. Vercel deployment via Git integration handles redeploys on push.
+
+Possible follow-ups if revisited:
+- Wire up `/mobile-v1/*` routes if the V1 flow needs to be exercisable from this repo (currently lives in a separate repo).
+- Decide whether to introduce a held "query sent" beat before the email gate appears on mobile, if user research shows the immediate gate transition feels abrupt.
+- Audit `.DS_Store` files currently tracked by git; the working tree shows modifications that are intentionally not staged.
+
+## References
+- Desktop V2: `references/variant-2/`
+- Mobile V2: `references/mobile-v2/` (flow chart + screens 05–09 plus annotations)
+- V1 references (for context): `references/variant-1/`
+
+## GitHub & Deployment
+- Repo: https://github.com/kclwork/docreviewv2-hifi
+- Live: https://docreviewv2-hifi.vercel.app
+- Vercel auto-deploys on push to `main` via Git integration
