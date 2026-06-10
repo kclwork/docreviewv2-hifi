@@ -1,5 +1,5 @@
 import { useRef } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import MobileNav from '../../components/mobile/MobileNav.jsx'
 import MobileFooter from '../../components/mobile/MobileFooter.jsx'
 import {
@@ -14,17 +14,19 @@ import styles from './MobileUpload.module.css'
 export default function MobileUpload() {
   const fileInputRef = useRef(null)
   const navigate = useNavigate()
+  const location = useLocation()
 
   function handleChangeFile() {
     fileInputRef.current?.click()
   }
 
   function handleFileChange() {
-    // Stay on /mobile-v1/upload — file picker just refreshes the confirmed state
+    // Stay on the current upload route — file picker just refreshes the confirmed state
   }
 
   function handleReview() {
-    navigate('/mobile-v1/processing')
+    const prefix = location.pathname.startsWith('/mobile-v2') ? '/mobile-v2' : '/mobile-v1'
+    navigate(`${prefix}/processing`)
   }
 
   return (

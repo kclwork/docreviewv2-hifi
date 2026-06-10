@@ -1,5 +1,5 @@
 import { useRef } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import MobileNav from '../../components/mobile/MobileNav.jsx'
 import MobileFooter from '../../components/mobile/MobileFooter.jsx'
 import {
@@ -13,13 +13,15 @@ import styles from './MobileMktLandingPage.module.css'
 export default function MobileMktLandingPage() {
   const fileInputRef = useRef(null)
   const navigate = useNavigate()
+  const location = useLocation()
 
   function handleUploadClick() {
     fileInputRef.current?.click()
   }
 
   function handleFileChange() {
-    navigate('/mobile-v1/upload')
+    const prefix = location.pathname.startsWith('/mobile-v2') ? '/mobile-v2' : '/mobile-v1'
+    navigate(`${prefix}/upload`)
   }
 
   return (

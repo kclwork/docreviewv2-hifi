@@ -1,15 +1,17 @@
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import MobileMenuOverlay from './MobileMenuOverlay.jsx'
 import styles from './MobileNav.module.css'
 
 export default function MobileNav() {
   const [menuOpen, setMenuOpen] = useState(false)
+  const location = useLocation()
+  const prefix = location.pathname.startsWith('/mobile-v2') ? '/mobile-v2' : '/mobile-v1'
 
   return (
     <>
       <nav className={styles.nav}>
-        <Link to="/mobile-v1" className={styles.logo} aria-label="LegalShield home">
+        <Link to={prefix} className={styles.logo} aria-label="LegalShield home">
           <img src="/images/logo.svg" alt="LegalShield" />
         </Link>
 

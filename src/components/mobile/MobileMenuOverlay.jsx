@@ -1,11 +1,12 @@
 import { useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import styles from './MobileMenuOverlay.module.css'
 
 const PRIMARY_ITEMS = ['Personal', 'Business', 'Resources', 'Pricing']
 
 export default function MobileMenuOverlay({ onClose }) {
   const navigate = useNavigate()
+  const location = useLocation()
 
   useEffect(() => {
     const prev = document.body.style.overflow
@@ -14,8 +15,9 @@ export default function MobileMenuOverlay({ onClose }) {
   }, [])
 
   function handleCta() {
+    const prefix = location.pathname.startsWith('/mobile-v2') ? '/mobile-v2' : '/mobile-v1'
     onClose()
-    navigate('/mobile-v1/get-a-free-document-review')
+    navigate(`${prefix}/get-a-free-document-review`)
   }
 
   return (
