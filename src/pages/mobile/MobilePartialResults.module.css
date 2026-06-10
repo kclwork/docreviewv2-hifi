@@ -1,0 +1,413 @@
+/* ===========================
+   WIDGET — section + rounded container
+   =========================== */
+.widgetSection {
+  padding: 32px 28px 48px;
+  background: var(--color-neutral-white);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.widget {
+  display: flex;
+  flex-direction: column;
+  border-radius: 20px;
+  overflow: hidden;
+  margin-top: 8px;
+}
+
+.top {
+  background: var(--color-accent-subtle-bg);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.bottom {
+  background: var(--color-neutral-warm-200);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* ===========================
+   POWERED BY ELLE
+   =========================== */
+.poweredRow {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--color-primary-purple);
+  font-family: var(--font-secondary);
+  font-size: var(--type-paragraph-sm-size);
+  line-height: var(--type-paragraph-sm-line-height);
+  font-weight: var(--font-weight-semibold);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* ===========================
+   FILENAME ROW
+   =========================== */
+.fileRow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  padding: 8px 0;
+  min-height: 44px;
+  align-self: flex-start;
+  color: var(--color-text-muted);
+  font-family: var(--font-secondary);
+  font-size: var(--type-paragraph-sm-size);
+  line-height: var(--type-paragraph-sm-line-height);
+}
+
+.fileName {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  color: var(--color-text-primary);
+  font-weight: var(--font-weight-medium);
+}
+
+/* ===========================
+   HEADLINE
+   =========================== */
+.headline {
+  font-family: var(--font-primary);
+  font-size: var(--type-h5-size);
+  line-height: var(--type-h5-line-height);
+  letter-spacing: var(--type-h5-letter-spacing);
+  font-weight: var(--font-weight-regular);
+  color: var(--color-neutral-black);
+  margin-top: 4px;
+}
+
+.subtext {
+  font-family: var(--font-secondary);
+  font-size: var(--type-paragraph-size);
+  line-height: var(--type-paragraph-line-height);
+  color: var(--color-text-muted);
+}
+
+/* ===========================
+   DIVIDER
+   =========================== */
+.divider {
+  height: 1px;
+  background: var(--color-border-default);
+  margin: 8px 0;
+}
+
+/* ===========================
+   DOCUMENT SUMMARY
+   =========================== */
+.summaryTrigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 0;
+  min-height: 0;
+  background: transparent;
+  width: 100%;
+}
+
+.summaryLabel {
+  font-family: var(--font-secondary);
+  font-size: var(--type-paragraph-sm-size);
+  line-height: var(--type-paragraph-sm-line-height);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.chevron {
+  color: var(--color-neutral-black);
+  transition: transform 0.2s ease;
+}
+
+.chevronOpen {
+  composes: chevron;
+  transform: rotate(180deg);
+}
+
+.summaryBody {
+  font-family: var(--font-secondary);
+  font-size: var(--type-paragraph-size);
+  line-height: var(--type-paragraph-line-height);
+  color: var(--color-text-primary);
+  padding-bottom: 8px;
+}
+
+/* ===========================
+   ISSUE LABEL + CARD
+   =========================== */
+.issueLabel {
+  font-family: var(--font-secondary);
+  font-size: var(--type-paragraph-sm-size);
+  line-height: var(--type-paragraph-sm-line-height);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.issueCard {
+  background: var(--color-neutral-white);
+  border-radius: 8px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-height: 220px;
+  position: relative;
+  cursor: pointer;
+  transition: min-height 0.2s ease;
+}
+
+.issueCard:active {
+  background: var(--color-neutral-gray-100);
+}
+
+.issueCardExpanded {
+  min-height: 0;
+}
+
+.issueContent {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.issueContentBlurred {
+  filter: blur(4px);
+  pointer-events: none;
+  user-select: none;
+}
+
+.issueTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.severityBadge {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 8px;
+  border-radius: 9999px;
+  font-family: var(--font-secondary);
+  font-size: 10px;
+  line-height: 16px;
+  font-weight: var(--font-weight-semibold);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.severityBadge--attorney {
+  background: var(--color-secondary-yellow);
+  color: var(--color-neutral-black);
+}
+
+.severityBadge--clarify {
+  background: var(--color-primary-light-purple);
+  color: var(--color-primary-purple);
+}
+
+.categoryLabel {
+  font-family: var(--font-secondary);
+  font-size: var(--type-paragraph-xs-size);
+  line-height: var(--type-paragraph-xs-line-height);
+  color: var(--color-text-muted);
+}
+
+.issueTitle {
+  font-family: var(--font-secondary);
+  font-size: var(--type-paragraph-size);
+  line-height: var(--type-paragraph-line-height);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+}
+
+.issueDescription {
+  font-family: var(--font-secondary);
+  font-size: var(--type-paragraph-sm-size);
+  line-height: var(--type-paragraph-sm-line-height);
+  color: var(--color-text-primary);
+}
+
+.issueDescriptionClamped {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.readMoreHint {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: auto;
+  font-family: var(--font-secondary);
+  font-size: var(--type-paragraph-xs-size);
+  line-height: var(--type-paragraph-xs-line-height);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-primary-purple);
+}
+
+/* ===========================
+   PAGINATION
+   =========================== */
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 8px;
+}
+
+.pagBtn {
+  width: 44px;
+  height: 44px;
+  border-radius: 9999px;
+  border: 1px solid var(--color-border-default);
+  background: var(--color-neutral-white);
+  color: var(--color-neutral-black);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.pagBtn:active {
+  background: var(--color-neutral-gray-300);
+}
+
+.dots {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 9999px;
+  background: var(--color-neutral-gray-500);
+}
+
+.dotActive {
+  background: var(--color-primary-purple);
+}
+
+.dotLocked {
+  background: var(--color-neutral-gray-500);
+  opacity: 0.4;
+}
+
+.dotActive.dotLocked {
+  background: var(--color-primary-purple);
+  opacity: 0.55;
+}
+
+/* ===========================
+   EMAIL GATE
+   =========================== */
+.gateHeadline {
+  font-family: var(--font-primary);
+  font-size: 28px;
+  line-height: 1.1;
+  letter-spacing: -0.84px;
+  font-weight: var(--font-weight-regular);
+  color: var(--color-neutral-black);
+}
+
+.gateSubtext {
+  font-family: var(--font-secondary);
+  font-size: var(--type-paragraph-size);
+  line-height: var(--type-paragraph-line-height);
+  color: var(--color-text-primary);
+}
+
+.emailForm {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.emailInputRow {
+  display: flex;
+  align-items: stretch;
+  background: var(--color-neutral-white);
+  border: 1px solid var(--color-border-default);
+  border-radius: 9999px;
+  padding: 4px;
+}
+
+.emailInputRowError {
+  border-color: var(--color-status-error);
+}
+
+.emailInput {
+  flex: 1;
+  border: none;
+  background: transparent;
+  padding: 10px 16px;
+  font-family: var(--font-secondary);
+  font-size: var(--type-paragraph-size);
+  line-height: var(--type-paragraph-line-height);
+  color: var(--color-text-primary);
+  outline: none;
+  min-height: 36px;
+}
+
+.emailInput::placeholder {
+  color: var(--color-textfield-placeholder);
+}
+
+.emailSubmit {
+  width: 44px;
+  height: 44px;
+  border-radius: 9999px;
+  background: var(--color-action-primary-default);
+  color: var(--color-text-inverse);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.emailSubmit:active {
+  background: var(--color-action-primary-active);
+}
+
+.emailError {
+  font-family: var(--font-secondary);
+  font-size: var(--type-paragraph-xs-size);
+  line-height: var(--type-paragraph-xs-line-height);
+  color: var(--color-status-error);
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.emailSuccess {
+  font-family: var(--font-secondary);
+  font-size: var(--type-paragraph-xs-size);
+  line-height: var(--type-paragraph-xs-line-height);
+  color: var(--color-status-success);
+}
+
+.finePrint {
+  font-family: var(--font-secondary);
+  font-size: var(--type-paragraph-xs-size);
+  line-height: var(--type-paragraph-xs-line-height);
+  color: var(--color-text-muted);
+}

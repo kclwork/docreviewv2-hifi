@@ -1,0 +1,236 @@
+/* ===========================
+   HERO
+   =========================== */
+.hero {
+  padding: 56px 28px;
+  background: #F5F4EE;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  text-align: center;
+}
+
+.heroHeadline {
+  font-family: var(--font-primary);
+  font-size: 40px;
+  line-height: 1.05;
+  letter-spacing: -1.2px;
+  font-weight: var(--font-weight-regular);
+  color: var(--color-neutral-black);
+}
+
+.heroSubtext {
+  font-family: var(--font-secondary);
+  font-size: var(--type-paragraph-size);
+  line-height: var(--type-paragraph-line-height);
+  color: var(--color-text-primary);
+}
+
+/* ===========================
+   FAQ
+   =========================== */
+.faqSection {
+  padding: 56px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.faqHeading {
+  font-family: var(--font-primary);
+  font-size: 36px;
+  line-height: 1.05;
+  letter-spacing: -1.2px;
+  font-weight: var(--font-weight-regular);
+  color: var(--color-neutral-black);
+  text-align: center;
+}
+
+.faqList {
+  display: flex;
+  flex-direction: column;
+}
+
+.faqItem {
+  display: flex;
+  flex-direction: column;
+}
+
+.faqTrigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 16px 0;
+  min-height: 44px;
+  background: transparent;
+  text-align: left;
+  width: 100%;
+}
+
+.faqQuestion {
+  font-family: var(--font-secondary);
+  font-size: var(--type-paragraph-size);
+  line-height: var(--type-paragraph-line-height);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-neutral-black);
+}
+
+.faqIcon {
+  font-family: var(--font-secondary);
+  font-size: 24px;
+  line-height: 1;
+  color: var(--color-neutral-black);
+  flex-shrink: 0;
+  width: 24px;
+  text-align: center;
+}
+
+.faqAnswer {
+  padding: 0 0 16px;
+}
+
+.faqAnswer p {
+  font-family: var(--font-secondary);
+  font-size: var(--type-paragraph-size);
+  line-height: var(--type-paragraph-line-height);
+  color: var(--color-text-primary);
+}
+
+.faqDivider {
+  height: 1px;
+  background: var(--color-border-default);
+}
+
+.helpCenterBtn {
+  align-self: center;
+  background: var(--color-neutral-white);
+  color: var(--color-neutral-gray-900);
+  border: 1px solid var(--color-neutral-gray-900);
+  font-family: var(--font-secondary);
+  font-size: var(--button-large-font-size);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--button-large-line-height);
+  padding: var(--button-large-padding-v) var(--button-large-padding-h);
+  border-radius: 9999px;
+  min-height: 44px;
+}
+
+.helpCenterBtn:active {
+  background: var(--color-action-secondary-active);
+  color: var(--color-text-inverse);
+}
+
+/* ===========================
+   BENEFITS
+   =========================== */
+.benefits {
+  padding: 56px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.benefitsImg {
+  width: 100%;
+  border-radius: 12px;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+.benefitsHeading {
+  font-family: var(--font-primary);
+  font-size: 36px;
+  line-height: 1.05;
+  letter-spacing: -1.2px;
+  font-weight: var(--font-weight-regular);
+  color: var(--color-neutral-black);
+}
+
+/* ===========================
+   PRICING
+   =========================== */
+.pricing {
+  padding: 56px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  background: var(--color-neutral-white);
+}
+
+.pricingHeading {
+  font-family: var(--font-primary);
+  font-size: 36px;
+  line-height: 1.05;
+  letter-spacing: -1.2px;
+  font-weight: var(--font-weight-regular);
+  color: var(--color-neutral-black);
+  text-align: center;
+}
+
+.pricingHeading em {
+  font-style: italic;
+}
+
+.pricingGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.pricingCard {
+  background: var(--color-primary-light-purple);
+  border-radius: 16px;
+  padding: 28px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.planName {
+  font-family: var(--font-primary);
+  font-size: 28px;
+  line-height: 1.1;
+  letter-spacing: -0.84px;
+  color: var(--color-neutral-black);
+  font-weight: var(--font-weight-regular);
+}
+
+.planDesc {
+  font-family: var(--font-secondary);
+  font-size: var(--type-paragraph-sm-size);
+  line-height: var(--type-paragraph-sm-line-height);
+  color: var(--color-text-muted);
+}
+
+.planPrice {
+  font-family: var(--font-secondary);
+  font-size: var(--type-h3-size);
+  line-height: var(--type-h3-line-height);
+  letter-spacing: var(--type-h3-letter-spacing);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-neutral-black);
+}
+
+.planPer {
+  font-size: 16px;
+  font-weight: var(--font-weight-regular);
+  color: var(--color-text-muted);
+  margin-left: 4px;
+}
+
+.planCta {
+  background: var(--color-action-primary-default);
+  color: var(--color-text-inverse);
+  font-family: var(--font-secondary);
+  font-size: var(--button-large-font-size);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--button-large-line-height);
+  padding: var(--button-large-padding-v) var(--button-large-padding-h);
+  border-radius: 9999px;
+  min-height: 44px;
+}
+
+.planCta:active {
+  background: var(--color-action-primary-active);
+}

@@ -1,0 +1,74 @@
+.uploadZone {
+  background: var(--color-neutral-white);
+  border: 1.5px dashed var(--color-border-default);
+  border-radius: 12px;
+  padding: 32px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.checkIcon {
+  width: 56px;
+  height: 56px;
+  border-radius: 9999px;
+  background: var(--color-action-primary-default);
+  color: var(--color-text-inverse);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.fileMeta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  margin-top: 4px;
+}
+
+.fileName {
+  font-family: var(--font-secondary);
+  font-size: var(--type-paragraph-size);
+  line-height: var(--type-paragraph-line-height);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-neutral-black);
+}
+
+.fileSize {
+  font-family: var(--font-secondary);
+  font-size: var(--type-paragraph-sm-size);
+  line-height: var(--type-paragraph-sm-line-height);
+  color: var(--color-text-muted);
+}
+
+.changeLink {
+  background: transparent;
+  font-family: var(--font-secondary);
+  font-size: var(--type-paragraph-size);
+  line-height: var(--type-paragraph-line-height);
+  color: var(--color-neutral-black);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  min-height: 44px;
+  padding: 8px 16px;
+}
+
+.reviewBtn {
+  align-self: stretch;
+  background: var(--color-action-primary-default);
+  color: var(--color-text-inverse);
+  font-family: var(--font-secondary);
+  font-size: var(--button-large-font-size);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--button-large-line-height);
+  padding: var(--button-large-padding-v) var(--button-large-padding-h);
+  border-radius: 9999px;
+  min-height: 44px;
+  margin-top: 8px;
+}
+
+.reviewBtn:active {
+  background: var(--color-action-primary-active);
+}

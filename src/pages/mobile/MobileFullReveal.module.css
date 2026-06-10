@@ -1,0 +1,78 @@
+/* ===========================
+   SUCCESS BANNER — capped header of widget
+   =========================== */
+.successBanner {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+  background: var(--color-status-success-subtle);
+}
+
+.successIcon {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  border-radius: 9999px;
+  background: var(--color-status-success);
+  color: var(--color-neutral-white);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.successText {
+  font-family: var(--font-secondary);
+  font-size: var(--type-paragraph-xs-size);
+  line-height: var(--type-paragraph-xs-line-height);
+  color: var(--color-text-primary);
+}
+
+.successText strong {
+  font-weight: var(--font-weight-semibold);
+}
+
+/* ===========================
+   BOTTOM SECTION — Elle's bottom line
+   =========================== */
+.bottom {
+  background: var(--color-surface-warm-default);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.bottomHeadline {
+  font-family: var(--font-primary);
+  font-size: var(--type-h6-size);
+  line-height: var(--type-h6-line-height);
+  letter-spacing: var(--type-h6-letter-spacing);
+  font-weight: var(--font-weight-regular);
+  color: var(--color-neutral-black);
+}
+
+.bottomBody {
+  font-family: var(--font-secondary);
+  font-size: var(--type-paragraph-sm-size);
+  line-height: var(--type-paragraph-sm-line-height);
+  color: var(--color-text-primary);
+}
+
+.bottomCta {
+  margin-top: 4px;
+  background: var(--color-neutral-black);
+  color: var(--color-text-inverse);
+  font-family: var(--font-secondary);
+  font-size: var(--button-large-font-size);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--button-large-line-height);
+  padding: var(--button-large-padding-v) var(--button-large-padding-h);
+  border-radius: 9999px;
+  min-height: 44px;
+  width: 100%;
+}
+
+.bottomCta:active {
+  background: var(--color-neutral-gray-900);
+}
